@@ -1,8 +1,9 @@
+
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; // Remove or increase for dashboards */
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  /* padding: 2rem; // Handled by DashboardLayout */
+  /* text-align: center; // Not always desired for dashboards */
 }
 
 .logo {
