@@ -9,7 +9,346 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      ae_dashboard_data: {
+        Row: {
+          account_id: string
+          account_summary: string | null
+          action_assessment_engagement_email_open_rate: number | null
+          action_assessment_engagement_meeting_attendance: number | null
+          action_assessment_engagement_response_rate: number | null
+          action_assessment_recommended_cadence: string | null
+          action_assessment_summary: string | null
+          analysis_date: string | null
+          company_name: string | null
+          created_at: string
+          health_score_change_value: number | null
+          health_score_current: number | null
+          health_score_trend: string | null
+          opportunity_score: number | null
+          risk_assessment_overall_risk_score: number | null
+          risk_assessment_summary: string | null
+          signal_analysis_sentiment_score: number | null
+          signal_analysis_summary: string | null
+          updated_at: string
+        }
+        Insert: {
+          account_id: string
+          account_summary?: string | null
+          action_assessment_engagement_email_open_rate?: number | null
+          action_assessment_engagement_meeting_attendance?: number | null
+          action_assessment_engagement_response_rate?: number | null
+          action_assessment_recommended_cadence?: string | null
+          action_assessment_summary?: string | null
+          analysis_date?: string | null
+          company_name?: string | null
+          created_at?: string
+          health_score_change_value?: number | null
+          health_score_current?: number | null
+          health_score_trend?: string | null
+          opportunity_score?: number | null
+          risk_assessment_overall_risk_score?: number | null
+          risk_assessment_summary?: string | null
+          signal_analysis_sentiment_score?: number | null
+          signal_analysis_summary?: string | null
+          updated_at?: string
+        }
+        Update: {
+          account_id?: string
+          account_summary?: string | null
+          action_assessment_engagement_email_open_rate?: number | null
+          action_assessment_engagement_meeting_attendance?: number | null
+          action_assessment_engagement_response_rate?: number | null
+          action_assessment_recommended_cadence?: string | null
+          action_assessment_summary?: string | null
+          analysis_date?: string | null
+          company_name?: string | null
+          created_at?: string
+          health_score_change_value?: number | null
+          health_score_current?: number | null
+          health_score_trend?: string | null
+          opportunity_score?: number | null
+          risk_assessment_overall_risk_score?: number | null
+          risk_assessment_summary?: string | null
+          signal_analysis_sentiment_score?: number | null
+          signal_analysis_summary?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ae_deal_progress: {
+        Row: {
+          account_id: string
+          created_at: string
+          days: number | null
+          id: string
+          stage: string | null
+        }
+        Insert: {
+          account_id: string
+          created_at?: string
+          days?: number | null
+          id?: string
+          stage?: string | null
+        }
+        Update: {
+          account_id?: string
+          created_at?: string
+          days?: number | null
+          id?: string
+          stage?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ae_deal_progress_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "ae_dashboard_data"
+            referencedColumns: ["account_id"]
+          },
+        ]
+      }
+      ae_effective_actions: {
+        Row: {
+          account_id: string
+          action_description: string | null
+          created_at: string
+          id: string
+        }
+        Insert: {
+          account_id: string
+          action_description?: string | null
+          created_at?: string
+          id?: string
+        }
+        Update: {
+          account_id?: string
+          action_description?: string | null
+          created_at?: string
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ae_effective_actions_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "ae_dashboard_data"
+            referencedColumns: ["account_id"]
+          },
+        ]
+      }
+      ae_engagement_over_time: {
+        Row: {
+          account_id: string
+          created_at: string
+          date: string | null
+          id: string
+          value: number | null
+        }
+        Insert: {
+          account_id: string
+          created_at?: string
+          date?: string | null
+          id?: string
+          value?: number | null
+        }
+        Update: {
+          account_id?: string
+          created_at?: string
+          date?: string | null
+          id?: string
+          value?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ae_engagement_over_time_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "ae_dashboard_data"
+            referencedColumns: ["account_id"]
+          },
+        ]
+      }
+      ae_ineffective_actions: {
+        Row: {
+          account_id: string
+          action_description: string | null
+          created_at: string
+          id: string
+        }
+        Insert: {
+          account_id: string
+          action_description?: string | null
+          created_at?: string
+          id?: string
+        }
+        Update: {
+          account_id?: string
+          action_description?: string | null
+          created_at?: string
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ae_ineffective_actions_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "ae_dashboard_data"
+            referencedColumns: ["account_id"]
+          },
+        ]
+      }
+      ae_risks: {
+        Row: {
+          account_id: string
+          created_at: string
+          id: string
+          impact: string | null
+          mitigation: string | null
+          probability: number | null
+          risk_description: string | null
+        }
+        Insert: {
+          account_id: string
+          created_at?: string
+          id?: string
+          impact?: string | null
+          mitigation?: string | null
+          probability?: number | null
+          risk_description?: string | null
+        }
+        Update: {
+          account_id?: string
+          created_at?: string
+          id?: string
+          impact?: string | null
+          mitigation?: string | null
+          probability?: number | null
+          risk_description?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ae_risks_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "ae_dashboard_data"
+            referencedColumns: ["account_id"]
+          },
+        ]
+      }
+      ae_signals: {
+        Row: {
+          account_id: string
+          category: string | null
+          created_at: string
+          date_detected: string | null
+          id: string
+          priority: string | null
+          signal_text: string | null
+        }
+        Insert: {
+          account_id: string
+          category?: string | null
+          created_at?: string
+          date_detected?: string | null
+          id?: string
+          priority?: string | null
+          signal_text?: string | null
+        }
+        Update: {
+          account_id?: string
+          category?: string | null
+          created_at?: string
+          date_detected?: string | null
+          id?: string
+          priority?: string | null
+          signal_text?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ae_signals_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "ae_dashboard_data"
+            referencedColumns: ["account_id"]
+          },
+        ]
+      }
+      ae_tactical_recommendations: {
+        Row: {
+          account_id: string
+          action_description: string | null
+          created_at: string
+          expected_outcome: string | null
+          id: string
+          priority: string | null
+          rationale: string | null
+          timing: string | null
+        }
+        Insert: {
+          account_id: string
+          action_description?: string | null
+          created_at?: string
+          expected_outcome?: string | null
+          id?: string
+          priority?: string | null
+          rationale?: string | null
+          timing?: string | null
+        }
+        Update: {
+          account_id?: string
+          action_description?: string | null
+          created_at?: string
+          expected_outcome?: string | null
+          id?: string
+          priority?: string | null
+          rationale?: string | null
+          timing?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ae_tactical_recommendations_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "ae_dashboard_data"
+            referencedColumns: ["account_id"]
+          },
+        ]
+      }
+      ae_talking_points: {
+        Row: {
+          account_id: string
+          created_at: string
+          id: string
+          point: string | null
+          supporting_data: string | null
+          topic: string | null
+        }
+        Insert: {
+          account_id: string
+          created_at?: string
+          id?: string
+          point?: string | null
+          supporting_data?: string | null
+          topic?: string | null
+        }
+        Update: {
+          account_id?: string
+          created_at?: string
+          id?: string
+          point?: string | null
+          supporting_data?: string | null
+          topic?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ae_talking_points_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "ae_dashboard_data"
+            referencedColumns: ["account_id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
